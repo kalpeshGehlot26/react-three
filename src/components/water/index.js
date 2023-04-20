@@ -21,13 +21,13 @@ const Water = (props) => {
           sunColor: 0xffffff,
           waterColor: 0x001e0f,
           eye: new Vector3(0, 10, 0),
-          distortionScale: 10, // automatically set from "distortionScale" prop
+          distortionScale: 1, // automatically set from "distortionScale" prop
           side: FrontSide,
           fog: true,
         }}
       >
         {(water) => {
-          console.log(water); // children function is passed `Water` instance for manual manipulation (e.g. sunDirection, animated waterColor, etc.)
+          // console.log(water); // children function is passed `Water` instance for manual manipulation (e.g. sunDirection, animated waterColor, etc.)
           return null;
         }}
       </Ocean>
