@@ -2,7 +2,6 @@
   "name": "r3f-physics",
   "version": "0.1.0",
   "private": true,
-  "homepage": "/",
   "dependencies": {
     "@dimforge/rapier3d-compat": "^0.11.2",
     "@react-three/cannon": "^6.5.2",
