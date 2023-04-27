@@ -10,6 +10,7 @@ import {
   OrbitControls,
   PointerLockControls,
 } from "@react-three/drei";
+import './assets/style.css'
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
