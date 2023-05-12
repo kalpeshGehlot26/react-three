@@ -10,7 +10,7 @@ import {
   OrbitControls,
   PointerLockControls,
 } from "@react-three/drei";
-import './assets/style.css'
+import "./assets/style.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -23,21 +23,11 @@ root.render(
       { name: "jump", keys: ["Space"] },
     ]}
   >
-    <audio loop id="music" preload="auto" style={{ display: "none" }} >
+    <audio loop id="music" preload="auto" style={{ display: "none" }}>
       <source src="sound/waves.mp3" type="audio/mp3" />
     </audio>
-    <Canvas shadows>
-      <OrbitControls
-        minPolarAngle={Math.PI / 2.3}
-        maxPolarAngle={Math.PI / 2.05}
-        enableDamping={true}
-        maxDistance={500}
-      />
-      <Physics>
-        <App />
-      </Physics>
-      {/* <PointerLockControls/> */}
-    </Canvas>
+
+    <App />
   </KeyboardControls>
 );
 
