@@ -1,6 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Environment, Html, Sky, Stars } from "@react-three/drei";
 import { Debug, RigidBody } from "@react-three/rapier";
+import { GLTFExporter } from 'three/addons/exporters/GLTFExporter.js';
+import { saveAs } from "file-saver";
 
 import Mountain from "../models/Mountain";
 import Temple from "../components/temple";
@@ -37,16 +39,16 @@ const Lights = ({ intensity }) => {
 const Scene = () => {
   const { controls } = useContext(AppContext);
 
-  const { camera } = useThree();
+  const { camera, scene } = useThree();
   const [enviroment, setEnviroment] = useState({
     type: "day",
     inclination: 0.6,
   });
 
   useEffect(() => {
-    camera.position.x = 50
-    camera.position.y = 5
-    camera.position.z = 0
+    camera.position.x = 50;
+    camera.position.y = 5;
+    camera.position.z = 0;
   }, []);
 
   const listener = new THREE.AudioListener();
@@ -83,6 +85,25 @@ const Scene = () => {
         clearInterval(countdown);
       }
     }, 100);
+  };
+
+  const handleExport = () => {
+    const exporter = new GLTFExporter();
+    exporter.parse(
+      scene,
+      function (gltfJson) {
+        console.log(gltfJson);
+        const jsonString = JSON.stringify(gltfJson);
+        console.log(jsonString);
+
+        // The following doesn't seem to work due to iframe sandboxing.
+        // But please save the gltf json from the Console to obtain the file.
+        const blob = new Blob([jsonString], { type: "application/json" });
+        // saveAs(blob, "colored-square.gltf");
+        console.log("Download requested");
+      },
+      { binary: false }
+    );
   };
 
   return (
@@ -132,14 +153,15 @@ const Scene = () => {
         <Water position={[0, 0, 0]} dimensions={[5000, 5000]} />
         {/* <Station/> */}
 
-         {/* <Bridge position={[0, -3, 600]} /> */}
-       {/* <Station position={[0, -9, -80]} />  */}
+        <Bridge position={[0, -3, 600]} />
+        {/* <Station position={[0, -9, -80]} />  */}
 
-        {/* <Train scale={0.8} position={[-300, -3, 600]} /> */}
+        <Train scale={0.8} position={[-300, -3, 600]} />
       </group>
 
       <Html fullscreen={true}>
         <div className="section-1">
+          {/* <button onClick={handleExport}>Export as GLTF</button> */}
           <button className="day-night" onClick={handleEnviroment}>
             <svg
               xmlns="http://www.w3.org/2000/svg"

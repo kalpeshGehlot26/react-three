@@ -11,7 +11,7 @@ const Water = (props) => {
       {/* <RigidBody colliders="trimesh" type="fixed"> */}
         <Ocean
           dimensions={dimensions}
-          normals="https://raw.githubusercontent.com/mrdoob/three.js/master/examples/textures/waternormals.jpg"
+          normals="textures/water 0340normal.jpg"
           distortionScale={2}
           size={10}
           options={{

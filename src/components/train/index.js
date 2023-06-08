@@ -15,7 +15,7 @@ const Train = (props) => {
 
   useFrame(({clock}) => {
     if (!stopCamera) {
-      trainRef.current.position.x -= clock.elapsedTime * 0.05;
+      // trainRef.current.position.x -= clock.elapsedTime * 0.005;
     }
   });
 
