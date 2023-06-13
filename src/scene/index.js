@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Environment, Html, Sky, Stars } from "@react-three/drei";
 import { Debug, RigidBody } from "@react-three/rapier";
-import { GLTFExporter } from 'three/addons/exporters/GLTFExporter.js';
+import { GLTFExporter } from "three/addons/exporters/GLTFExporter.js";
 import { saveAs } from "file-saver";
 
 import Mountain from "../models/Mountain";
@@ -54,21 +54,16 @@ const Scene = () => {
   const listener = new THREE.AudioListener();
   camera.add(listener);
 
-  const positionalAudio = new THREE.PositionalAudio(listener);
-  const audioElement = document.getElementById("music");
+  const audioLoader = new THREE.AudioLoader();
 
-  // document.body.addEventListener("mousemove", function () {
-  //   // audio.play()
-  //   audioElement.play();
-  // });
+  audioLoader.load("sound/waves.mp3", (buffer) => {
+    const audio = new THREE.Audio(listener);
 
-  // useEffect(() => {
-  //   if (!audioElement) {
-  //     positionalAudio.setMediaElementSource(audioElement);
-  //     positionalAudio.setRefDistance(1);
-  //     positionalAudio.setDirectionalCone(180, 230, 0.1);
-  //   }
-  // }, [audioElement, positionalAudio]);
+    audio.setBuffer(buffer);
+    audio.setVolume(0.1)
+    audio.setLoop(true)
+    audio.play();
+  });
 
   const handleEnviroment = () => {
     let initial = enviroment.inclination;
@@ -148,15 +143,17 @@ const Scene = () => {
       <group scale={0.2}>
         <group position={[0, 0, 0]} scale={1.3}>
           <Mountain />
-          <Temple position={[20, 6, 0]} />
+          <Temple position={[-12, 5.8, 0]} />
         </group>
-        <Water position={[0, 0, 0]} dimensions={[5000, 5000]} />
+        <Water position={[0, 0, 0]} dimensions={[2000, 2000]} />
         {/* <Station/> */}
 
-        <Bridge position={[0, -3, 600]} />
-        {/* <Station position={[0, -9, -80]} />  */}
+        <group>
+          <Bridge scale={1} position={[-300, -3, 450]} />
+          {/* <Station position={[0, -9, -80]} />  */}
 
-        <Train scale={0.8} position={[-300, -3, 600]} />
+          <Train scale={1} position={[300, -3, 450]} />
+        </group>
       </group>
 
       <Html fullscreen={true}>

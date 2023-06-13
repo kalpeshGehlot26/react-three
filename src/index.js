@@ -23,10 +23,6 @@ root.render(
       { name: "jump", keys: ["Space"] },
     ]}
   >
-    <audio loop id="music" preload="auto" style={{ display: "none" }}>
-      <source src="sound/waves.mp3" type="audio/mp3" />
-    </audio>
-
     <App />
   </KeyboardControls>
 );

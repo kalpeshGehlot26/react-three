@@ -59,7 +59,7 @@ const BridgeSection = (props) => {
                 color={"white"}
                 map={props.texture}
               />
-              <meshBasicMaterial attach="material-2" color="gray" />
+              <meshBasicMaterial attach="material-2" color="#757474" />
               <meshBasicMaterial attach="material-3" color="pink" />
               <meshBasicMaterial
                 attach="material-4"
@@ -96,15 +96,15 @@ const Bridge = (props) => {
   );
 
   return (
-    <group scale={0.8} {...props}>
+    <group {...props}>
       <BridgeSection
-        position={[0, 10, -300]}
-        noOfSections={100}
+        position={[200, 10, -300]}
+        noOfSections={70}
         texture={sectionTexture}
       />
       <Pillers
-        position={[70, 4.5, -300]}
-        noOfPillers={100}
+        position={[200, 4.5, -300]}
+        noOfPillers={70}
         texture={pillerTexture}
       />
     </group>

@@ -8,12 +8,12 @@ const Water = (props) => {
   const { dimensions } = props;
   return (
     <mesh {...props}>
-      {/* <RigidBody colliders="trimesh" type="fixed"> */}
+      <RigidBody colliders="trimesh" type="fixed">
         <Ocean
           dimensions={dimensions}
           normals="textures/water 0340normal.jpg"
           distortionScale={2}
-          size={10}
+          size={50}
           options={{
             // defaults
             clipBias: 0,
@@ -33,7 +33,7 @@ const Water = (props) => {
             return null;
           }}
         </Ocean>
-      {/* </RigidBody> */}
+      </RigidBody>
     </mesh>
   );
 };

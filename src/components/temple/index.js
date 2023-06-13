@@ -107,7 +107,7 @@ const Temple = (props) => {
   const trishul = useLoader(GLTFLoader, "models/trishul.glb")
 
   return (
-    <group {...props} scale={1.3} >
+    <group {...props} scale={1} >
       <group scale={1.2} position={[10, 0, -5]}>
         <RigidBody type="fixed">
           <group>
